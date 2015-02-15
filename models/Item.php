@@ -33,9 +33,10 @@ class Item extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'parent_id', 'branch_id', 'created_at', 'updated_at', 'active'], 'integer'],
             [['content'], 'string'],
-            [['parent_class'], 'string', 'max' => 255]
+            ['user_id', 'filter', 'filter' => function(){
+                return $this->isNewRecord ? \Yii::$app->user->id : $this->user_id;
+            }]
         ];
     }
 
@@ -54,6 +55,16 @@ class Item extends \yii\db\ActiveRecord
             'created_at' => Yii::t('modules/comment', 'Created At'),
             'updated_at' => Yii::t('modules/comment', 'Updated At'),
             'active' => Yii::t('modules/comment', 'Active'),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() 
+    {
+        return [
+            \yii\behaviors\TimestampBehavior::className(),
         ];
     }
 }

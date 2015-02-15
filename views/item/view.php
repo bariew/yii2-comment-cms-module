@@ -39,5 +39,4 @@ $this->params['breadcrumbs'][] = $this->title;
             'active',
         ],
     ]) ?>
-
 </div>
