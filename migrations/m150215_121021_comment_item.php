@@ -2,13 +2,13 @@
 
 use yii\db\Schema;
 use yii\db\Migration;
-
+use bariew\commentModule\models\Item;
 class m150215_121021_comment_item extends Migration
 {
     public function up()
     {
         //TODO make Item::tableName()
-        return $this->createTable('comment_item', [
+        return $this->createTable(Item::tableName(), [
             'id' => Schema::TYPE_PK,
             'user_id' => Schema::TYPE_INTEGER,
             'parent_class' => Schema::TYPE_STRING,
@@ -23,6 +23,6 @@ class m150215_121021_comment_item extends Migration
 
     public function down()
     {
-        return $this->dropTable('comment_item');
+        return $this->dropTable(Item::tableName());
     }
 }
