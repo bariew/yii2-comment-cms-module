@@ -10,6 +10,9 @@
             "email": "bariew@yandex.ru"
         }
     ],
+    "require" : {
+        "bariew/yii2-tools": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "bariew\\commentModule\\": ""
